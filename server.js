@@ -12,12 +12,13 @@ Module().then(instance => {
 app.get("/", async (req, res) => {
   let n = req.query.n ? req.query.n : 1;
 
-  if (n <= 50) { n = 50 }
+  if (n >= 46) { n = 1 }
 
   let result = fib(n);
 
-  console.log("result = " + result);
-  res.send(`Fibonacci of ${n} is ${result} - calculated using WebAssembly!`);
+  let text = `Fibonacci of ${n} is ${result} - calculated using WebAssembly! Use ?n=<value> to set value.`;
+  console.log(text);
+  res.send(text);
 });
 
 app.listen(8080, () => console.log("starting fib fun"));
